@@ -1,0 +1,95 @@
+package bai2;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
+public class khachHang {
+	private String maKhachHang;
+	private String hoTen;
+	private LocalDate ngayHoaDon;
+	private int soLuong;
+	private double donGia;
+
+	public khachHang() {
+	}
+
+	public khachHang(String maKhachHang, String hoTen, LocalDate ngayHoaDon, int soLuong, double donGia) {
+		this.maKhachHang = maKhachHang;
+		this.hoTen = hoTen;
+		this.ngayHoaDon = ngayHoaDon;
+		this.soLuong = soLuong;
+		this.donGia = donGia;
+	}
+
+	public String getMaKhachHang() {
+		return maKhachHang;
+	}
+
+	public void setMaKhachHang(String maKhachHang) {
+		this.maKhachHang = maKhachHang;
+	}
+
+	public String getHoTen() {
+		return hoTen;
+	}
+
+	public void setHoTen(String hoTen) {
+		this.hoTen = hoTen;
+	}
+
+	public LocalDate getNgayHoaDon() {
+		return ngayHoaDon;
+	}
+
+	public void setNgayHoaDon(LocalDate ngayHoaDon) {
+		this.ngayHoaDon = ngayHoaDon;
+	}
+
+	public int getSoLuong() {
+		return soLuong;
+	}
+
+	public void setSoLuong(int soLuong) {
+		this.soLuong = soLuong;
+	}
+
+	public double getDonGia() {
+		return donGia;
+	}
+
+	public void setDonGia(double donGia) {
+		this.donGia = donGia;
+	}
+
+	@Override
+	public String toString() {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("/");
+		String date = dtf.format(this.ngayHoaDon);
+		return "khachHang [maKhachHang=" + maKhachHang + ", hoTen=" + hoTen + ", ngayHoaDon=" + ngayHoaDon
+				+ ", soLuong=" + soLuong + ", donGia=" + donGia + "]";
+	}
+
+	public void nhap() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("nhập mã khách hàng");
+		this.setMaKhachHang(sc.nextLine());
+
+		System.out.println("nhập họ tên");
+		this.setHoTen(sc.nextLine());
+
+		System.out.println("nhập ngày hóa đơn");
+		String inputDate = sc.nextLine();
+		String date[] = inputDate.split("/");
+		int ngay = Integer.parseInt(date[0]);
+		int thang = Integer.parseInt(date[1]);
+		int nam = Integer.parseInt(date[2]);
+		this.ngayHoaDon = LocalDate.of(nam, thang, ngay);
+
+		System.out.println("nhập số lượng");
+		this.setSoLuong(sc.nextInt());
+
+		System.out.println("nhập đơn giá");
+		this.setDonGia(sc.nextDouble());
+	}
+}
