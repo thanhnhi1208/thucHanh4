@@ -1,0 +1,45 @@
+package bai1;
+
+import java.time.LocalDate;
+import java.util.Scanner;
+
+public class giaoDichDat extends giaoDich {
+	private String loaiDat;
+
+	public giaoDichDat() {
+
+	}
+
+	public giaoDichDat(String loaiDat, String maGiaoDich, String tenGiaoDich, LocalDate ngayGiaoDich, double donGia, double dienTich) {
+		super(maGiaoDich, tenGiaoDich,ngayGiaoDich, donGia, dienTich);
+		this.loaiDat = loaiDat;
+	}
+
+	public String getLoaiDat() {
+		return loaiDat;
+	}
+
+	public void setLoaiDat(String loaiDat) {
+		this.loaiDat = loaiDat;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString()+"giaoDichDat [loaiDat=" + loaiDat +",thành tiền = "+thanhTien()+ "]";
+	}
+
+	public double thanhTien() {
+		if (this.getLoaiDat().equals("B") || this.getLoaiDat().equals("C")) {
+			return super.getDienTich() * super.getDonGia();
+		} else {
+			return super.getDienTich() * super.getDonGia() * 1.5;
+		}
+	}
+
+	public void nhap() {
+		Scanner sc = new Scanner(System.in);
+		super.nhap();
+		System.out.println("nhập loại đất");
+		this.setLoaiDat(sc.nextLine());
+	}
+}
