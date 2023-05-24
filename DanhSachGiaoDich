@@ -41,12 +41,14 @@ public class DanhSachGiaoDich {
 
 	public double trungBinhLoaiDat() {
 		double tong = 0;
+		int o=0;
 		for (giaoDich giaoDich : list) {
 			if (giaoDich instanceof giaoDichDat) {
 				tong += ((giaoDichDat) giaoDich).thanhTien();
+				o++;
 			}
 		}
-		return tong;
+		return tong/o;
 	}
 
 	public void xuatNgayGiaoDich() {
