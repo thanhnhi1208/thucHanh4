@@ -1,0 +1,95 @@
+package bai1;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
+public class giaoDich {
+	private String maGiaoDich;
+	private String tenGiaoDich;
+	private LocalDate ngayGiaoDich;
+	private double donGia;
+	private double dienTich;
+
+	public giaoDich() {
+	}
+
+	public giaoDich(String maGiaoDich, String tenGiaoDich, LocalDate ngayGiaoDich, double donGia, double dienTich) {
+		this.maGiaoDich = maGiaoDich;
+		this.tenGiaoDich = tenGiaoDich;
+		this.ngayGiaoDich = ngayGiaoDich;
+		this.donGia = donGia;
+		this.dienTich = dienTich;
+	}
+
+	public String getTenGiaoDich() {
+		return tenGiaoDich;
+	}
+
+	public void setTenGiaoDich(String tenGiaoDich) {
+		this.tenGiaoDich = tenGiaoDich;
+	}
+
+	public String getMaGiaoDich() {
+		return maGiaoDich;
+	}
+
+	public void setMaGiaoDich(String maGiaoDich) {
+		this.maGiaoDich = maGiaoDich;
+	}
+
+	public LocalDate getNgayGiaoDich() {
+		return ngayGiaoDich;
+	}
+
+	public void setNgayGiaoDich(LocalDate ngayGiaoDich) {
+		this.ngayGiaoDich = ngayGiaoDich;
+	}
+
+	public double getDonGia() {
+		return donGia;
+	}
+
+	public void setDonGia(double donGia) {
+		this.donGia = donGia;
+	}
+
+	public double getDienTich() {
+		return dienTich;
+	}
+
+	public void setDienTich(double dienTich) {
+		this.dienTich = dienTich;
+	}
+
+	@Override
+	public String toString() {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("/");
+		String date = dtf.format(this.ngayGiaoDich);
+		return "giaoDich [maGiaoDich=" + maGiaoDich + "tenGiaoDich=" + tenGiaoDich + ", ngayGiaoDich=" + ngayGiaoDich
+				+ ", donGia=" + donGia + ", dienTich=" + dienTich + "]";
+	}
+
+	public void nhap() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("nhập mã giao dịch");
+		this.setMaGiaoDich(sc.nextLine());
+
+		System.out.println("nhập tên giao dịch");
+		this.setTenGiaoDich(sc.nextLine());
+
+		System.out.println("nhập ngày giao dịch");
+		String inputDate = sc.nextLine();
+		String date[] = inputDate.split("/");
+		int ngay = Integer.parseInt(date[0]);
+		int thang = Integer.parseInt(date[1]);
+		int nam = Integer.parseInt(date[2]);
+		this.ngayGiaoDich = LocalDate.of(nam, thang, ngay);
+
+		System.out.println("nhập đơn giá");
+		this.setDonGia(sc.nextDouble());
+
+		System.out.println("nhập diện tích");
+		this.setDienTich(sc.nextDouble());
+	}
+}
