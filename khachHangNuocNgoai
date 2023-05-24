@@ -1,0 +1,44 @@
+package bai2;
+
+import java.time.LocalDate;
+import java.util.Scanner;
+
+public class khachHangNuocNgoai extends khachHang {
+	private String quocTich;
+
+	public khachHangNuocNgoai() {
+
+	}
+
+	public khachHangNuocNgoai(String quocTich, int soLuong, String maKhachHang, String hoTen, LocalDate ngayHoaDon,
+			double donGia) {
+		super(maKhachHang, hoTen, ngayHoaDon, soLuong, donGia);
+		this.quocTich = quocTich;
+
+	}
+
+	public String getQuocTich() {
+		return quocTich;
+	}
+
+	public void setQuocTich(String quocTich) {
+		this.quocTich = quocTich;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "khachHangNuocNgoai [quocTich=" + quocTich + "]";
+	}
+
+	public double thanhTien() {
+		return this.getSoLuong() * this.getDonGia();
+	}
+
+	public void nhap() {
+		Scanner sc = new Scanner(System.in);
+		super.nhap();
+		System.out.println("nhập quốc tịch");
+		this.setQuocTich(sc.nextLine());
+	}
+
+}
