@@ -1,0 +1,117 @@
+package bai2;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import bai1.giaoDich;
+import bai1.giaoDichDat;
+
+public class danhSachKhachHang {
+	public ArrayList<khachHang> list;
+
+	public danhSachKhachHang() {
+		list = new ArrayList<khachHang>();
+	}
+
+	public danhSachKhachHang(ArrayList<khachHang> list) {
+		super();
+		this.list = list;
+	}
+
+	public void nhap(khachHang kh) {
+		this.list.add(kh);
+	}
+
+	public void xuat() {
+		for (khachHang khachHang : list) {
+			System.out.println(khachHang);
+		}
+	}
+
+	public int tongSoLuongKHVN() {
+		int KHVN = 0;
+		for (khachHang khachHang : list) {
+			if (khachHang instanceof khachHangVietNam) {
+				KHVN++;
+			}
+		}
+		return KHVN;
+	}
+
+	public int tongSoLuongKHNN() {
+		int KHNN = 0;
+		for (khachHang khachHang : list) {
+			if (khachHang instanceof khachHangNuocNgoai) {
+				KHNN++;
+			}
+		}
+		return KHNN;
+	}
+
+	public double trungBinhTTNN() {
+		double tong = 0;
+		int o = 0;
+		for (khachHang khachHang : list) {
+			if (khachHang instanceof khachHangNuocNgoai) {
+				tong += ((khachHangNuocNgoai) khachHang).thanhTien();
+				o++;
+			}
+		}
+		return tong / o;
+	}
+
+	public void xuatNgay() {
+		for (khachHang khachHang : list) {
+			if (khachHang.getNgayHoaDon().isEqual(LocalDate.now())) {
+				System.out.println(khachHang);
+			}
+		}
+	}
+
+	public void menu() {
+		Scanner sc = new Scanner(System.in);
+		int chon = 0;
+		do {
+			System.out.println("1.nhập");
+			System.out.println("2.tổng số lượng khách hàng việt nam");
+			System.out.println("3.tổng số lượng khách hàng nước ngoài");
+			System.out.println("4.trung bình thành tiền nước ngoài");
+			System.out.println("5.xuất hóa đơn");
+			System.out.println("6.xuất tất cả thông tin");
+			System.out.println("0.thoát chương trình");
+			chon = sc.nextInt();
+			if (chon == 1) {
+				khachHang kh;
+				int luaChon = 0;
+				do {
+					System.out.println("1.khách hàng việt nam");
+					System.out.println("2.khách hàng nước ngoài");
+					luaChon = sc.nextInt();
+					if (luaChon == 1) {
+						kh = new khachHangNuocNgoai();
+						kh.nhap();
+						this.nhap(kh);
+					} else if (luaChon == 2) {
+						kh = new khachHangVietNam();
+						kh.nhap();
+						this.nhap(kh);
+					}
+
+				} while (luaChon != 1 && luaChon != 2);
+			} else if (chon == 2) {
+				System.out.println("tổng số lượng khách hàng việt nam:" + this.tongSoLuongKHVN());
+			} else if (chon == 3) {
+				System.out.println("tổng số lượng khách hàng nước ngoài:" + this.tongSoLuongKHNN());
+			} else if (chon == 4) {
+				System.out.println("trung bình thành tiền nước ngoài:" + this.trungBinhTTNN());
+			} else if (chon == 5) {
+				this.xuatNgay();
+			} else if (chon == 6) {
+				this.xuat();
+			} else {
+				System.out.println("thoát chương trình hành công");
+			}
+		} while (chon != 0);
+	}
+}
