@@ -1,0 +1,97 @@
+package bai3;
+
+import java.util.Scanner;
+
+public class DiemHocVien {
+	private String hoTen;
+	private String namSinh;
+	private Diem diem;
+
+	public DiemHocVien() {
+
+	}
+
+	public String getHoTen() {
+		return hoTen;
+	}
+
+	@Override
+	public String toString() {
+		return "DiemHocVien [hoTen=" + hoTen + ", namSinh=" + namSinh + ", diem=" + diem.toString() + "]";
+	}
+
+	public void setHoTen(String hoTen) {
+		this.hoTen = hoTen;
+	}
+
+	public String getNamSinh() {
+		return namSinh;
+	}
+
+	public void setNamSinh(String namSinh) {
+		this.namSinh = namSinh;
+	}
+
+	public Diem getDiem() {
+		return diem;
+	}
+
+	public void setDiem(Diem diem) {
+		this.diem = diem;
+	}
+
+	public DiemHocVien(String hoTen, String namSinh, Diem diem) {
+		super();
+		this.hoTen = hoTen;
+		this.namSinh = namSinh;
+		this.diem = diem;
+	}
+
+	public void nhap() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("nhập họ tên");
+		this.setHoTen(sc.nextLine());
+
+		System.out.println("nhập năm sinh");
+		this.setNamSinh(sc.nextLine());
+
+		this.diem = new Diem();
+		diem.nhap();
+
+	}
+
+	public boolean rot() {
+		if (this.diem.getDiem1() < 5 || this.diem.getDiem2() < 5 || this.diem.getDiem3() < 5 || this.diem.getDiem4() < 5
+				|| this.diem.getDiem5() < 5) {
+			return true;
+		}
+		return false;
+	}
+
+	public void monRot() {
+		if (this.diem.getDiem1() < 5) {
+			System.out.println("mon rot:" + this.diem.getDiem1());
+		}
+
+		if (this.diem.getDiem2() < 5) {
+			System.out.println("mon rot:" + this.diem.getDiem2());
+		}
+
+		if (this.diem.getDiem3() < 5) {
+			System.out.println("mon rot:" + this.diem.getDiem3());
+		}
+
+		if (this.diem.getDiem4() < 5) {
+			System.out.println("mon rot:" + this.diem.getDiem4());
+		}
+
+		if (this.diem.getDiem5() < 5) {
+			System.out.println("mon rot:" + this.diem.getDiem5());
+		}
+	}
+
+	public double diemTrungBinh() {
+		return this.diem.getDiem1() + this.diem.getDiem2() + this.diem.getDiem3() + this.diem.getDiem4()
+				+ this.diem.getDiem5() / 5;
+	}
+}
