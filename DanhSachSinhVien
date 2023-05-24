@@ -1,0 +1,70 @@
+package bai3;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class DanhSachSinhVien {
+	public ArrayList<DiemHocVien> list;
+
+	public DanhSachSinhVien(ArrayList<DiemHocVien> list) {
+
+		this.list = list;
+	}
+
+	public DanhSachSinhVien() {
+		list = new ArrayList<DiemHocVien>();
+	}
+
+	public void nhap(DiemHocVien dhv) {
+		this.list.add(dhv);
+	}
+
+	public void xuat() {
+		for (DiemHocVien diemHocVien : list) {
+			System.out.println(diemHocVien);
+		}
+	}
+
+	public void trangThai() {
+		int luanVan = 0;
+		int totNghiep = 0;
+		int thiRot = 0;
+		for (DiemHocVien diemHocVien : list) {
+			if (diemHocVien.diemTrungBinh() > 7 && diemHocVien.rot() == false) {
+				luanVan++;
+			} else if (diemHocVien.diemTrungBinh() <= 7 && diemHocVien.rot() == false) {
+				totNghiep++;
+			} else if (diemHocVien.rot() == true) {
+				thiRot++;
+			}
+		}
+		System.out.println("số người tham gia luận văn"+luanVan);
+		System.out.println("số người tốt nghiệp"+totNghiep);
+		System.out.println("số người rớt môn"+thiRot);
+	}
+
+	public void menu() {
+		Scanner sc = new Scanner(System.in);
+		DiemHocVien dhv=new DiemHocVien();
+		int chon = 0;
+		do {
+			System.out.println("1.nhập");
+			System.out.println("2.xuất");
+			System.out.println("3.xuất trạng thái");
+			System.out.println("0.thoát");
+			chon=sc.nextInt();
+			if (chon == 1) {
+				dhv = new DiemHocVien();
+				dhv.nhap();
+				this.nhap(dhv);
+			} else if (chon == 2) {
+				this.xuat();
+				
+			}else if(chon==3) {
+				this.trangThai();
+			}else {
+				System.out.println("thoát chương trình thành công");
+			}
+		} while (chon != 0);
+	}
+}
