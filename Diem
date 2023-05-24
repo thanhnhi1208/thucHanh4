@@ -1,0 +1,80 @@
+package bai3;
+
+import java.util.Scanner;
+
+public class Diem {
+	private double diem1, diem2, diem3, diem4, diem5;
+
+	public Diem(double diem1, double diem2, double diem3, double diem4, double diem5) {
+
+		this.diem1 = diem1;
+		this.diem2 = diem2;
+		this.diem3 = diem3;
+		this.diem4 = diem4;
+		this.diem5 = diem5;
+	}
+
+	public Diem() {
+
+	}
+
+	public double getDiem1() {
+		return diem1;
+	}
+
+	public void setDiem1(double diem1) {
+		this.diem1 = diem1;
+	}
+
+	public double getDiem2() {
+		return diem2;
+	}
+
+	public void setDiem2(double diem2) {
+		this.diem2 = diem2;
+	}
+
+	public double getDiem3() {
+		return diem3;
+	}
+
+	public void setDiem3(double diem3) {
+		this.diem3 = diem3;
+	}
+
+	public double getDiem4() {
+		return diem4;
+	}
+
+	public void setDiem4(double diem4) {
+		this.diem4 = diem4;
+	}
+
+	public double getDiem5() {
+		return diem5;
+	}
+
+	public void setDiem5(double diem5) {
+		this.diem5 = diem5;
+	}
+
+	@Override
+	public String toString() {
+		return "Diem [diem1=" + diem1 + ", diem2=" + diem2 + ", diem3=" + diem3 + ", diem4=" + diem4 + ", diem5="
+				+ diem5 + "]";
+	}
+
+	public void nhap() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("nhập điểm môn 1");
+		this.setDiem1(sc.nextDouble());
+		System.out.println("nhập điểm môn 2");
+		this.setDiem2(sc.nextDouble());
+		System.out.println("nhập điểm môn 3");
+		this.setDiem3(sc.nextDouble());
+		System.out.println("nhập điểm môn 4");
+		this.setDiem4(sc.nextDouble());
+		System.out.println("nhập điểm môn 5");
+		this.setDiem5(sc.nextDouble());
+	}
+}
